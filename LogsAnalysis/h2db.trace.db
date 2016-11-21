@@ -1,0 +1,477 @@
+2016-11-20 05:15:09 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Column "DATETIME" not found; SQL statement:
+insert into logs (datetime, username, message) values ('2014-12-31 12:55:28', 'guran', 'blablabla') [42122-193]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.table.Table.getColumn(Table.java:682)
+	at org.h2.command.Parser.parseColumn(Parser.java:878)
+	at org.h2.command.Parser.parseColumnList(Parser.java:862)
+	at org.h2.command.Parser.parseInsert(Parser.java:1062)
+	at org.h2.command.Parser.parsePrepared(Parser.java:413)
+	at org.h2.command.Parser.parse(Parser.java:317)
+	at org.h2.command.Parser.parse(Parser.java:289)
+	at org.h2.command.Parser.prepareCommand(Parser.java:254)
+	at org.h2.engine.Session.prepareLocal(Session.java:561)
+	at org.h2.engine.Session.prepareCommand(Session.java:502)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1203)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:170)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:158)
+	at dbService.executor.Executor.execUpdate(Executor.java:21)
+	at dbService.dao.LogsDAO.insertLog(LogsDAO.java:36)
+	at dbService.DBService.addLog(DBService.java:37)
+	at main.Main.main(Main.java:16)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:147)
+2016-11-20 13:02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS LOGS (DATE_TIME DATETIME, USER_NAME VARCHAR(256), CUSTOM_MESSAGE VARCHAR(256) [*]"; expected "FOR, UNSIGNED, NOT, NULL, AS, DEFAULT, GENERATED, NOT, NULL, AUTO_INCREMENT, BIGSERIAL, SERIAL, IDENTITY, NULL_TO_DEFAULT, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, PRIMARY, UNIQUE, NOT, NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+create table if not exists logs (date_time datetime, user_name varchar(256), custom_message varchar(256) [42001-193]
+2016-11-20 13:02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "LOGS" not found; SQL statement:
+select * from logs [42102-193]
+2016-11-20 13:03:12 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "LOGS" not found; SQL statement:
+drop table logs [42102-193]
+2016-11-20 13:03:40 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS LOGS (DATE_TIME DATETIME, USER_NAME VARCHAR(256), CUSTOM_MESSAGE VARCHAR(256) [*]"; expected "FOR, UNSIGNED, NOT, NULL, AS, DEFAULT, GENERATED, NOT, NULL, AUTO_INCREMENT, BIGSERIAL, SERIAL, IDENTITY, NULL_TO_DEFAULT, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, PRIMARY, UNIQUE, NOT, NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+create table if not exists logs (date_time datetime, user_name varchar(256), custom_message varchar(256) [42001-193]
+2016-11-20 13:03:40 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "LOGS" not found; SQL statement:
+select * from logs [42102-193]
+2016-11-20 13:10:49 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Column "LOGS.ID" must be in the GROUP BY list; SQL statement:
+select * from logs GROUP BY user_name [90016-193]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.expression.ExpressionColumn.updateAggregate(ExpressionColumn.java:169)
+	at org.h2.command.dml.Select.queryGroup(Select.java:365)
+	at org.h2.command.dml.Select.queryWithoutCache(Select.java:650)
+	at org.h2.command.dml.Query.query(Query.java:341)
+	at org.h2.command.dml.Query.query(Query.java:309)
+	at org.h2.command.dml.Query.query(Query.java:36)
+	at org.h2.command.CommandContainer.query(CommandContainer.java:110)
+	at org.h2.command.Command.executeQuery(Command.java:201)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:179)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:158)
+	at dbService.executor.Executor.execQuery(Executor.java:30)
+	at dbService.dao.LogsDAO.getAllLogs(LogsDAO.java:29)
+	at dbService.DBService.getAll(DBService.java:28)
+	at main.Main.main(Main.java:87)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:147)
+2016-11-20 13:14:46 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Column "LOGS.ID" must be in the GROUP BY list; SQL statement:
+select * from logs GROUP BY logs.user_name [90016-193]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.expression.ExpressionColumn.updateAggregate(ExpressionColumn.java:169)
+	at org.h2.command.dml.Select.queryGroup(Select.java:365)
+	at org.h2.command.dml.Select.queryWithoutCache(Select.java:650)
+	at org.h2.command.dml.Query.query(Query.java:341)
+	at org.h2.command.dml.Query.query(Query.java:309)
+	at org.h2.command.dml.Query.query(Query.java:36)
+	at org.h2.command.CommandContainer.query(CommandContainer.java:110)
+	at org.h2.command.Command.executeQuery(Command.java:201)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:179)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:158)
+	at dbService.executor.Executor.execQuery(Executor.java:30)
+	at dbService.dao.LogsDAO.getAllLogs(LogsDAO.java:29)
+	at dbService.DBService.getAll(DBService.java:28)
+	at main.Main.main(Main.java:87)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:147)
+2016-11-20 13:15:21 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SELECT * FROM LOGS SORT BY[*] LOGS.USER_NAME GROUP BY LOGS.USER_NAME "; SQL statement:
+select * from logs sort by logs.user_name GROUP BY logs.user_name [42000-193]
+2016-11-20 13:15:33 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SELECT * FROM LOGS SORT BY[*] LOGS.USER_NAME GROUP BY LOGS.USER_NAME, ID "; SQL statement:
+select * from logs sort by logs.user_name GROUP BY logs.user_name, id [42000-193]
+2016-11-20 13:15:51 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SELECT * FROM LOGS SORT BY[*] LOGS.USER_NAME GROUP BY LOGS.USER_NAME, ID "; SQL statement:
+select * from logs sort by logs.user_name GROUP BY LOGS.USER_NAME, ID [42000-193]
+2016-11-20 13:17:18 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SELECT * FROM LOGS DATEPART([*]YEAR, DATE_TIME.[DATE]) "; SQL statement:
+select * from logs DATEPART(YEAR, date_time.[Date]) [42000-193]
+2016-11-20 13:18:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SELECT * FROM LOGS DATEPART([*] * YEAR, DATE_TIME.[DATE]) "; SQL statement:
+select * from logs DATEPART( * YEAR, date_time.[Date]) [42000-193]
+2016-11-20 13:29:23 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SELECT * FROM LOGS DATEPART([*] * YEAR, DATE_TIME.[DATE]) "; SQL statement:
+select * from logs DATEPART( * YEAR, date_time.[Date]) [42000-193]
+2016-11-20 13:31:02 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SELECT * FROM LOGS DATEPART([*]YEAR, DATE_TIME) "; SQL statement:
+select * from logs DATEPART(YEAR, date_time) [42000-193]
+2016-11-20 13:31:37 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Function "DATEPART" not found; SQL statement:
+select * from logs GROUP BY DATEPART(YEAR, date_time) [90022-193]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.command.Parser.readJavaFunction(Parser.java:2421)
+	at org.h2.command.Parser.readFunction(Parser.java:2473)
+	at org.h2.command.Parser.readTerm(Parser.java:2807)
+	at org.h2.command.Parser.readFactor(Parser.java:2324)
+	at org.h2.command.Parser.readSum(Parser.java:2311)
+	at org.h2.command.Parser.readConcat(Parser.java:2281)
+	at org.h2.command.Parser.readCondition(Parser.java:2128)
+	at org.h2.command.Parser.readAnd(Parser.java:2100)
+	at org.h2.command.Parser.readExpression(Parser.java:2092)
+	at org.h2.command.Parser.parseSelectSimple(Parser.java:2060)
+	at org.h2.command.Parser.parseSelectSub(Parser.java:1891)
+	at org.h2.command.Parser.parseSelectUnion(Parser.java:1709)
+	at org.h2.command.Parser.parseSelect(Parser.java:1697)
+	at org.h2.command.Parser.parsePrepared(Parser.java:445)
+	at org.h2.command.Parser.parse(Parser.java:317)
+	at org.h2.command.Parser.parse(Parser.java:289)
+	at org.h2.command.Parser.prepareCommand(Parser.java:254)
+	at org.h2.engine.Session.prepareLocal(Session.java:561)
+	at org.h2.engine.Session.prepareCommand(Session.java:502)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1203)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:170)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:158)
+	at dbService.executor.Executor.execQuery(Executor.java:30)
+	at dbService.dao.LogsDAO.getAllLogs(LogsDAO.java:29)
+	at dbService.DBService.getAll(DBService.java:28)
+	at main.Main.main(Main.java:87)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:147)
+2016-11-20 13:33:11 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Function "DATEPART" not found; SQL statement:
+select * from logs GROUP BY DATEPART(YEAR,date_time) [90022-193]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.command.Parser.readJavaFunction(Parser.java:2421)
+	at org.h2.command.Parser.readFunction(Parser.java:2473)
+	at org.h2.command.Parser.readTerm(Parser.java:2807)
+	at org.h2.command.Parser.readFactor(Parser.java:2324)
+	at org.h2.command.Parser.readSum(Parser.java:2311)
+	at org.h2.command.Parser.readConcat(Parser.java:2281)
+	at org.h2.command.Parser.readCondition(Parser.java:2128)
+	at org.h2.command.Parser.readAnd(Parser.java:2100)
+	at org.h2.command.Parser.readExpression(Parser.java:2092)
+	at org.h2.command.Parser.parseSelectSimple(Parser.java:2060)
+	at org.h2.command.Parser.parseSelectSub(Parser.java:1891)
+	at org.h2.command.Parser.parseSelectUnion(Parser.java:1709)
+	at org.h2.command.Parser.parseSelect(Parser.java:1697)
+	at org.h2.command.Parser.parsePrepared(Parser.java:445)
+	at org.h2.command.Parser.parse(Parser.java:317)
+	at org.h2.command.Parser.parse(Parser.java:289)
+	at org.h2.command.Parser.prepareCommand(Parser.java:254)
+	at org.h2.engine.Session.prepareLocal(Session.java:561)
+	at org.h2.engine.Session.prepareCommand(Session.java:502)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1203)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:170)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:158)
+	at dbService.executor.Executor.execQuery(Executor.java:30)
+	at dbService.dao.LogsDAO.getAllLogs(LogsDAO.java:29)
+	at dbService.DBService.getAll(DBService.java:28)
+	at main.Main.main(Main.java:87)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:147)
+2016-11-20 13:33:27 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SELECT * FROM LOGS GROUP BY  DATE_TIME DATEPART[*](YEAR, DATE_TIME) "; SQL statement:
+select * from logs GROUP BY  date_time DATEPART(YEAR, date_time) [42000-193]
+2016-11-20 13:33:49 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Function "DATEPART" not found; SQL statement:
+select * from logs GROUP BY  date_time, DATEPART(YEAR, date_time) [90022-193]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.command.Parser.readJavaFunction(Parser.java:2421)
+	at org.h2.command.Parser.readFunction(Parser.java:2473)
+	at org.h2.command.Parser.readTerm(Parser.java:2807)
+	at org.h2.command.Parser.readFactor(Parser.java:2324)
+	at org.h2.command.Parser.readSum(Parser.java:2311)
+	at org.h2.command.Parser.readConcat(Parser.java:2281)
+	at org.h2.command.Parser.readCondition(Parser.java:2128)
+	at org.h2.command.Parser.readAnd(Parser.java:2100)
+	at org.h2.command.Parser.readExpression(Parser.java:2092)
+	at org.h2.command.Parser.parseSelectSimple(Parser.java:2060)
+	at org.h2.command.Parser.parseSelectSub(Parser.java:1891)
+	at org.h2.command.Parser.parseSelectUnion(Parser.java:1709)
+	at org.h2.command.Parser.parseSelect(Parser.java:1697)
+	at org.h2.command.Parser.parsePrepared(Parser.java:445)
+	at org.h2.command.Parser.parse(Parser.java:317)
+	at org.h2.command.Parser.parse(Parser.java:289)
+	at org.h2.command.Parser.prepareCommand(Parser.java:254)
+	at org.h2.engine.Session.prepareLocal(Session.java:561)
+	at org.h2.engine.Session.prepareCommand(Session.java:502)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1203)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:170)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:158)
+	at dbService.executor.Executor.execQuery(Executor.java:30)
+	at dbService.dao.LogsDAO.getAllLogs(LogsDAO.java:29)
+	at dbService.DBService.getAll(DBService.java:28)
+	at main.Main.main(Main.java:87)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:147)
+2016-11-20 13:39:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Column "LOGS.ID" must be in the GROUP BY list; SQL statement:
+select * from logs GROUP BY YEAR(date_time) [90016-193]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.expression.ExpressionColumn.updateAggregate(ExpressionColumn.java:169)
+	at org.h2.command.dml.Select.queryGroup(Select.java:365)
+	at org.h2.command.dml.Select.queryWithoutCache(Select.java:650)
+	at org.h2.command.dml.Query.query(Query.java:341)
+	at org.h2.command.dml.Query.query(Query.java:309)
+	at org.h2.command.dml.Query.query(Query.java:36)
+	at org.h2.command.CommandContainer.query(CommandContainer.java:110)
+	at org.h2.command.Command.executeQuery(Command.java:201)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:179)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:158)
+	at dbService.executor.Executor.execQuery(Executor.java:30)
+	at dbService.dao.LogsDAO.getAllLogs(LogsDAO.java:29)
+	at dbService.DBService.getAll(DBService.java:28)
+	at main.Main.main(Main.java:87)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:147)
+2016-11-20 13:40:56 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS LOGS (DATE_TIME DATETIME, USER_NAME VARCHAR(256), CUSTOM_MESSAGE VARCHAR(256), PRIMARY KEY (DATE_TIME DATETIME[*])) "; expected "ASC, DESC, NULLS, ,, )"; SQL statement:
+create table if not exists logs (date_time datetime, user_name varchar(256), custom_message varchar(256), primary key (date_time datetime)) [42001-193]
+2016-11-20 13:40:56 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS LOGS (DATE_TIME DATETIME, USER_NAME VARCHAR(256), CUSTOM_MESSAGE VARCHAR(256), PRIMARY KEY (DATE_TIME DATETIME[*])) "; expected "ASC, DESC, NULLS, ,, )"; SQL statement:
+create table if not exists logs (date_time datetime, user_name varchar(256), custom_message varchar(256), primary key (date_time datetime)) [42001-193]
+2016-11-20 13:40:56 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS LOGS (DATE_TIME DATETIME, USER_NAME VARCHAR(256), CUSTOM_MESSAGE VARCHAR(256), PRIMARY KEY (DATE_TIME DATETIME[*])) "; expected "ASC, DESC, NULLS, ,, )"; SQL statement:
+create table if not exists logs (date_time datetime, user_name varchar(256), custom_message varchar(256), primary key (date_time datetime)) [42001-193]
+2016-11-20 13:40:56 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "LOGS" not found; SQL statement:
+select * from logs GROUP BY YEAR(date_time), LOGS.ID [42102-193]
+2016-11-20 13:42:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS LOGS (ID BIGINT AUTO_INCREMENT, DATE_TIME DATETIME, USER_NAME VARCHAR(256), CUSTOM_MESSAGE VARCHAR(256), PRIMARY KEY (DATE_TIME DATETIME[*])) "; expected "ASC, DESC, NULLS, ,, )"; SQL statement:
+create table if not exists logs (id bigint auto_increment, date_time datetime, user_name varchar(256), custom_message varchar(256), primary key (date_time datetime)) [42001-193]
+2016-11-20 13:42:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS LOGS (ID BIGINT AUTO_INCREMENT, DATE_TIME DATETIME, USER_NAME VARCHAR(256), CUSTOM_MESSAGE VARCHAR(256), PRIMARY KEY (DATE_TIME DATETIME[*])) "; expected "ASC, DESC, NULLS, ,, )"; SQL statement:
+create table if not exists logs (id bigint auto_increment, date_time datetime, user_name varchar(256), custom_message varchar(256), primary key (date_time datetime)) [42001-193]
+2016-11-20 13:42:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS LOGS (ID BIGINT AUTO_INCREMENT, DATE_TIME DATETIME, USER_NAME VARCHAR(256), CUSTOM_MESSAGE VARCHAR(256), PRIMARY KEY (DATE_TIME DATETIME[*])) "; expected "ASC, DESC, NULLS, ,, )"; SQL statement:
+create table if not exists logs (id bigint auto_increment, date_time datetime, user_name varchar(256), custom_message varchar(256), primary key (date_time datetime)) [42001-193]
+2016-11-20 13:42:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "LOGS" not found; SQL statement:
+select * from logs GROUP BY YEAR(date_time), LOGS.ID [42102-193]
+2016-11-20 13:42:51 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS LOGS (ID BIGINT AUTO_INCREMENT, DATE_TIME DATETIME, USER_NAME VARCHAR(256), CUSTOM_MESSAGE VARCHAR(256), PRIMARY KEY (DATE_TIME DATETIME[*]) ASC) "; expected "ASC, DESC, NULLS, ,, )"; SQL statement:
+create table if not exists logs (id bigint auto_increment, date_time datetime, user_name varchar(256), custom_message varchar(256), primary key (date_time datetime) ASC) [42001-193]
+2016-11-20 13:42:51 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS LOGS (ID BIGINT AUTO_INCREMENT, DATE_TIME DATETIME, USER_NAME VARCHAR(256), CUSTOM_MESSAGE VARCHAR(256), PRIMARY KEY (DATE_TIME DATETIME[*]) ASC) "; expected "ASC, DESC, NULLS, ,, )"; SQL statement:
+create table if not exists logs (id bigint auto_increment, date_time datetime, user_name varchar(256), custom_message varchar(256), primary key (date_time datetime) ASC) [42001-193]
+2016-11-20 13:42:51 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS LOGS (ID BIGINT AUTO_INCREMENT, DATE_TIME DATETIME, USER_NAME VARCHAR(256), CUSTOM_MESSAGE VARCHAR(256), PRIMARY KEY (DATE_TIME DATETIME[*]) ASC) "; expected "ASC, DESC, NULLS, ,, )"; SQL statement:
+create table if not exists logs (id bigint auto_increment, date_time datetime, user_name varchar(256), custom_message varchar(256), primary key (date_time datetime) ASC) [42001-193]
+2016-11-20 13:42:51 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "LOGS" not found; SQL statement:
+select * from logs GROUP BY YEAR(date_time), LOGS.ID [42102-193]
+2016-11-20 13:43:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS LOGS (ID BIGINT AUTO_INCREMENT, DATE_TIME DATETIME, USER_NAME VARCHAR(256), CUSTOM_MESSAGE VARCHAR(256), PRIMARY KEY (DATE_TIME DATETIME[*]) ASC) "; expected "ASC, DESC, NULLS, ,, )"; SQL statement:
+create table if not exists logs (id bigint auto_increment, date_time datetime, user_name varchar(256), custom_message varchar(256), primary key (date_time datetime) ASC) [42001-193]
+2016-11-20 13:43:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS LOGS (ID BIGINT AUTO_INCREMENT, DATE_TIME DATETIME, USER_NAME VARCHAR(256), CUSTOM_MESSAGE VARCHAR(256), PRIMARY KEY (DATE_TIME DATETIME[*]) ASC) "; expected "ASC, DESC, NULLS, ,, )"; SQL statement:
+create table if not exists logs (id bigint auto_increment, date_time datetime, user_name varchar(256), custom_message varchar(256), primary key (date_time datetime) ASC) [42001-193]
+2016-11-20 13:43:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS LOGS (ID BIGINT AUTO_INCREMENT, DATE_TIME DATETIME, USER_NAME VARCHAR(256), CUSTOM_MESSAGE VARCHAR(256), PRIMARY KEY (DATE_TIME DATETIME[*]) ASC) "; expected "ASC, DESC, NULLS, ,, )"; SQL statement:
+create table if not exists logs (id bigint auto_increment, date_time datetime, user_name varchar(256), custom_message varchar(256), primary key (date_time datetime) ASC) [42001-193]
+2016-11-20 13:43:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "LOGS" not found; SQL statement:
+select * from logs GROUP BY YEAR(date_time), LOGS.ID [42102-193]
+2016-11-20 13:44:02 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS LOGS (DATE_TIME DATETIME, USER_NAME VARCHAR(256), CUSTOM_MESSAGE VARCHAR(256), PRIMARY KEY (DATE_TIME DATETIME[*]) ASC) "; expected "ASC, DESC, NULLS, ,, )"; SQL statement:
+create table if not exists logs (date_time datetime, user_name varchar(256), custom_message varchar(256), primary key (date_time datetime) ASC) [42001-193]
+2016-11-20 13:44:02 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS LOGS (DATE_TIME DATETIME, USER_NAME VARCHAR(256), CUSTOM_MESSAGE VARCHAR(256), PRIMARY KEY (DATE_TIME DATETIME[*]) ASC) "; expected "ASC, DESC, NULLS, ,, )"; SQL statement:
+create table if not exists logs (date_time datetime, user_name varchar(256), custom_message varchar(256), primary key (date_time datetime) ASC) [42001-193]
+2016-11-20 13:44:02 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS LOGS (DATE_TIME DATETIME, USER_NAME VARCHAR(256), CUSTOM_MESSAGE VARCHAR(256), PRIMARY KEY (DATE_TIME DATETIME[*]) ASC) "; expected "ASC, DESC, NULLS, ,, )"; SQL statement:
+create table if not exists logs (date_time datetime, user_name varchar(256), custom_message varchar(256), primary key (date_time datetime) ASC) [42001-193]
+2016-11-20 13:44:02 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "LOGS" not found; SQL statement:
+select * from logs GROUP BY YEAR(date_time), LOGS.ID [42102-193]
+2016-11-20 13:44:24 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS LOGS (DATE_TIME DATETIME, USER_NAME VARCHAR(256), CUSTOM_MESSAGE VARCHAR(256), PRIMARY KEY (DATE_TIME DATETIME[*] ASC)) "; expected "ASC, DESC, NULLS, ,, )"; SQL statement:
+create table if not exists logs (date_time datetime, user_name varchar(256), custom_message varchar(256), primary key (date_time datetime ASC)) [42001-193]
+2016-11-20 13:44:24 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS LOGS (DATE_TIME DATETIME, USER_NAME VARCHAR(256), CUSTOM_MESSAGE VARCHAR(256), PRIMARY KEY (DATE_TIME DATETIME[*] ASC)) "; expected "ASC, DESC, NULLS, ,, )"; SQL statement:
+create table if not exists logs (date_time datetime, user_name varchar(256), custom_message varchar(256), primary key (date_time datetime ASC)) [42001-193]
+2016-11-20 13:44:24 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS LOGS (DATE_TIME DATETIME, USER_NAME VARCHAR(256), CUSTOM_MESSAGE VARCHAR(256), PRIMARY KEY (DATE_TIME DATETIME[*] ASC)) "; expected "ASC, DESC, NULLS, ,, )"; SQL statement:
+create table if not exists logs (date_time datetime, user_name varchar(256), custom_message varchar(256), primary key (date_time datetime ASC)) [42001-193]
+2016-11-20 13:44:24 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "LOGS" not found; SQL statement:
+select * from logs GROUP BY YEAR(date_time), LOGS.ID [42102-193]
+2016-11-20 14:01:03 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Column "LOGS.ID" must be in the GROUP BY list; SQL statement:
+select * from logs GROUP BY user_name [90016-193]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.expression.ExpressionColumn.updateAggregate(ExpressionColumn.java:169)
+	at org.h2.command.dml.Select.queryGroup(Select.java:365)
+	at org.h2.command.dml.Select.queryWithoutCache(Select.java:650)
+	at org.h2.command.dml.Query.query(Query.java:341)
+	at org.h2.command.dml.Query.query(Query.java:309)
+	at org.h2.command.dml.Query.query(Query.java:36)
+	at org.h2.command.CommandContainer.query(CommandContainer.java:110)
+	at org.h2.command.Command.executeQuery(Command.java:201)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:179)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:158)
+	at dbService.executor.Executor.execQuery(Executor.java:30)
+	at dbService.dao.LogsDAO.getAllLogs(LogsDAO.java:29)
+	at dbService.DBService.getAll(DBService.java:28)
+	at main.Main.main(Main.java:84)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:147)
+2016-11-20 14:16:13 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Column "LOGS.ID" must be in the GROUP BY list; SQL statement:
+select * from logs GROUP BY user_name [90016-193]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.expression.ExpressionColumn.updateAggregate(ExpressionColumn.java:169)
+	at org.h2.command.dml.Select.queryGroup(Select.java:365)
+	at org.h2.command.dml.Select.queryWithoutCache(Select.java:650)
+	at org.h2.command.dml.Query.query(Query.java:341)
+	at org.h2.command.dml.Query.query(Query.java:309)
+	at org.h2.command.dml.Query.query(Query.java:36)
+	at org.h2.command.CommandContainer.query(CommandContainer.java:110)
+	at org.h2.command.Command.executeQuery(Command.java:201)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:179)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:158)
+	at dbService.executor.Executor.execQuery(Executor.java:30)
+	at dbService.dao.LogsDAO.getAllLogs(LogsDAO.java:29)
+	at dbService.DBService.getAll(DBService.java:28)
+	at main.Main.main(Main.java:84)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:147)
+2016-11-20 14:21:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "DIYANET" not found; SQL statement:
+select * from DIYANET GROUP BY user_name [42102-193]
+2016-11-20 14:25:25 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SELECT * FROM LOGS SORT BY[*] DATE_TIME GROUP BY USER_NAME "; SQL statement:
+select * from logs SORT BY date_time GROUP BY user_name [42000-193]
+2016-11-20 14:26:31 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SELECT * FROM LOGS GROUP BY USER_NAME SORT[*] BY DATE_TIME  "; SQL statement:
+select * from logs GROUP BY user_name SORT BY date_time  [42000-193]
+2016-11-20 14:26:49 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SELECT * FROM LOGS GROUP BY USER_NAME SORT[*] BY DATE_TIME ASC "; SQL statement:
+select * from logs GROUP BY user_name SORT BY date_time ASC [42000-193]
+2016-11-20 14:31:50 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Column "DATE_TIME" must be in the GROUP BY list; SQL statement:
+select date_time, user_name, custom_message from logs GROUP BY user_name [90016-193]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.expression.ExpressionColumn.updateAggregate(ExpressionColumn.java:169)
+	at org.h2.command.dml.Select.queryGroup(Select.java:365)
+	at org.h2.command.dml.Select.queryWithoutCache(Select.java:650)
+	at org.h2.command.dml.Query.query(Query.java:341)
+	at org.h2.command.dml.Query.query(Query.java:309)
+	at org.h2.command.dml.Query.query(Query.java:36)
+	at org.h2.command.CommandContainer.query(CommandContainer.java:110)
+	at org.h2.command.Command.executeQuery(Command.java:201)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:179)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:158)
+	at dbService.executor.Executor.execQuery(Executor.java:30)
+	at dbService.dao.LogsDAO.getAllLogs(LogsDAO.java:29)
+	at dbService.DBService.getAll(DBService.java:28)
+	at main.Main.main(Main.java:84)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:147)
+2016-11-20 14:32:18 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Column "CUSTOM_MESSAGE" must be in the GROUP BY list; SQL statement:
+select date_time, user_name, custom_message from logs GROUP BY user_name, DATE_TIME [90016-193]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.expression.ExpressionColumn.updateAggregate(ExpressionColumn.java:169)
+	at org.h2.command.dml.Select.queryGroup(Select.java:365)
+	at org.h2.command.dml.Select.queryWithoutCache(Select.java:650)
+	at org.h2.command.dml.Query.query(Query.java:341)
+	at org.h2.command.dml.Query.query(Query.java:309)
+	at org.h2.command.dml.Query.query(Query.java:36)
+	at org.h2.command.CommandContainer.query(CommandContainer.java:110)
+	at org.h2.command.Command.executeQuery(Command.java:201)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:179)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:158)
+	at dbService.executor.Executor.execQuery(Executor.java:30)
+	at dbService.dao.LogsDAO.getAllLogs(LogsDAO.java:29)
+	at dbService.DBService.getAll(DBService.java:28)
+	at main.Main.main(Main.java:84)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:147)
+2016-11-20 21:55:36 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "LOGS" not found; SQL statement:
+SELECT COUNT(id) FROM logs WHERE user_name = 'guran' GROUP BY user_name [42102-193]
+2016-11-21 00:26:40 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "LOGS" not found; SQL statement:
+select date_time, user_name, custom_message from logs [42102-193]
+2016-11-21 00:27:43 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "LOGS" not found; SQL statement:
+select date_time, user_name, custom_message from logs [42102-193]
+2016-11-21 00:33:15 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "LOGS" not found; SQL statement:
+select date_time, user_name, custom_message from logs [42102-193]
+2016-11-21 01:13:34 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: No data is available [2000-193]
+2016-11-21 01:15:45 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: No data is available [2000-193]
+2016-11-21 01:59:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Column "GURAN" not found; SQL statement:
+SELECT COUNT(*) FROM `logs` WHERE HOUR(date_time) = guran [42122-193]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:147)
+	at org.h2.expression.Comparison.optimize(Comparison.java:180)
+	at org.h2.command.dml.Select.prepare(Select.java:856)
+	at org.h2.command.Parser.prepareCommand(Parser.java:259)
+	at org.h2.engine.Session.prepareLocal(Session.java:561)
+	at org.h2.engine.Session.prepareCommand(Session.java:502)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1203)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:170)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:158)
+	at dbService.executor.Executor.execQuery(Executor.java:30)
+	at dbService.dao.LogsDAO.getGroupedByHourRecordsCount(LogsDAO.java:45)
+	at dbService.DBService.getGroupedByhourRecordsCount(DBService.java:39)
+	at main.Main.main(Main.java:68)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:147)
